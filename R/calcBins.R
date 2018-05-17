@@ -136,7 +136,7 @@ calcBins <- function(pD, n, rl, med, min, genome, map_file, seed=1337){
       
       cov_sub_cs_normed = t(apply(cov_sub_mat, 1, cumsum))/rl
       medz = apply(cov_sub_cs_normed, 2, stats::median)
-      while(max(medz)>=med){
+      while(max(medz)>=2*med){
             cut = which(medz>=med)[1]
             output = rbind(output, c(cut, medz[cut]))
             count = count+1; j = sum(output[,1])+1
